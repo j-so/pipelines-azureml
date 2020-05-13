@@ -30,7 +30,9 @@ steps:
     workingDirectory: $(ml-path)
     scriptLocation: inlineScript
     scriptType: 'bash'
-    inlineScript: 'pwd && az ml folder attach -w $(ml-ws) -g $(ml-rg) --path $(ml-path)'
+    inlineScript: |
+      pwd && az ml folder attach -w $(ml-ws) -g $(ml-rg) --path $(ml-path)
+      jq --version
 
 - task: AzureCLI@2
   displayName: 'Create compute for training'
