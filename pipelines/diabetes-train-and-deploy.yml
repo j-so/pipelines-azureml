@@ -31,7 +31,7 @@ steps:
     scriptLocation: inlineScript
     scriptType: 'bash'
     inlineScript: |
-      pwd && az ml folder attach -w $(ml-ws) -g $(ml-rg) --path $(ml-path)
+      pwd && az ml folder attach -w $(ml-ws) -g $(ml-rg)
       jq --version
 
 - task: AzureCLI@2
