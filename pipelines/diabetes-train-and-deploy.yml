@@ -3,7 +3,7 @@ variables:
   ml-ws: 'jenns-centralus' # AML Workspace name
   ml-rg: 'jenns' # AML resource Group name
   ml-ct: 'cpu-cluster-1' # AML Compute cluster name
-  ml-path: 'src' # Model directory path in repo
+  ml-path: 'model/diabetes' # Model directory path in repo
   ml-exp: 'exp-test' # Experiment name
   ml-model-name: 'diabetes-model' # Model name
   ml-aks-name: 'aks-prod' # AKS cluster name
@@ -31,7 +31,7 @@ steps:
     scriptLocation: inlineScript
     scriptType: 'bash'
     inlineScript: |
-      az ml folder attach -w $(ml-ws) -g $(ml-rg) --path 'model/diabetes'
+      az ml folder attach -w $(ml-ws) -g $(ml-rg)
   
 - task: AzureCLI@2
   displayName: 'Train model'
@@ -40,7 +40,7 @@ steps:
     workingDirectory: $(ml-path)
     scriptLocation: inlineScript
     scriptType: 'bash'
-    inlineScript: 'az ml run submit-script -c config/train.runconfig --ct $(ml-ct) -e $(ml-exp) train.py'
+    inlineScript: 'az ml run submit-script -c config/dne --ct $(ml-ct) -e $(ml-exp) train.py'
 
 # Add potential approval step before registration of model
 
