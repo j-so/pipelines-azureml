@@ -6,7 +6,7 @@ variables:
 - name: ml-rg
   value: jenns
 - name: ml-ct
-  value: cup-cluster-1
+  value: cpu-cluster-1
 - name: ml-path
   value: models/diabetes
 - name: ml-exp
