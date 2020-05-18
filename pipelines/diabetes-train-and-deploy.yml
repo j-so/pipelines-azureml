@@ -48,9 +48,7 @@ stages:
         workingDirectory: $(ml-path)
         scriptLocation: inlineScript
         scriptType: bash
-        inlineScript: |
-          az ml run submit-script -c config/train --ct $(ml-ct) -e $(ml-exp) train.py
-          cat run.json
+        inlineScript: az ml run submit-script -c config/train --ct $(ml-ct) -e $(ml-exp) -t run.json train.py
     - task: AzureCLI@2
       displayName: Register model
       inputs:
